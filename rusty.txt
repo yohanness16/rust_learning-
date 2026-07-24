@@ -1,0 +1,31 @@
+# rust
+
+rust is a low level programming lang which overcone memory  safty using borrow checker concept 
+rust is used for high level programming such as -- backend development blockchaun and web 3 development cli tool devlopment to low system level development as c 
+rust is not a traditional object oreinted programmin languge 
+rust is languge of modern era 
+modern achive oop concepts through memory saft approchs such as class as struct and impl 
+rust has a concet of if compile it run 
+
+## rust installetion 
+to install rust in linux we run this command in command prompt 
+
+
+ curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
+
+
+ after that we will se a text 
+
+
+ rust is installed now great !
+
+
+to check the rust version 
+run  rustc --version 
+
+to update run 
+rustup update 
+and to uninstall run 
+rustup self uninstall 
+
+

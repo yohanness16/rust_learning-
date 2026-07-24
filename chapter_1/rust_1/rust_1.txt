@@ -1,0 +1,32 @@
+### writing hello world with rust 
+
+create a file name main.rs
+
+rs is a rust extension 
+
+then to write hello world type the following 
+
+fn main () {
+    println!("hello world");
+}
+
+lets see what does this is doing 
+fn main is creating the main function all files are excuted in rust from the main function 
+
+println!()  is used to excute the print statement in line 
+{} use to declare the body of the function everything in the currly brace is part of the main function
+
+
+running the code !
+
+in the terminal in the folder where the main.rs is declared we write the following commands
+
+rustc main.rs  which calls tre rust compiler to compile the written rust code 
+then a excutable compiled file named main is created in the folder 
+running it with command ./main will run the output 
+
+
+### formating a rust code 
+
+to format the rust code we use a command rustfmt 
+usage : rustfmt main.rs 
