@@ -1,0 +1,193 @@
+### variable shadowing
+
+is a way of declaring same varible again with different data type 
+we use the let keyword again when we declare the iable again 
+no mut required 
+the first value declared is no longer used 
+
+example
+
+fn main (){
+
+    let size : &str = "10.05" ;
+    println!("{size}");
+
+    let size :f64 = 10.05;
+    println!("{size}");
+
+    let size : i32 = 10;
+    println!("{size}");
+}
+
+the code output will be 
+10.05
+10.05
+10
+
+why??
+because we have shadowed it so the size virible works in the scop from its declaration to its next declaration 
+after that it will no longer be the first one 
+
+
+### scope of a variable 
+
+scope of the varibleiable indicate the life of the variable or the block in which the varibale is valid 
+for example if i have this code 
+
+fn main () {
+    let x : i32 = 100;
+    println!("{x}");
+}
+
+println!("{x}");
+
+in the main function the x will be printed but outside it the print will be error cause no varible named x in its scope
+
+scope of a varible is defined by the block in which it is located 
+block is defined by curly braces 
+for example :
+fn main (){
+    let x : i32 = 100;
+    println!("{x}");
+    {
+        let x : i32 = 150;
+        println!("{x}");
+    }
+    println!("{x}");
+}
+
+
+the output will be 
+100
+150
+100
+
+causee the first one is in main scope so the x is 100
+the second print is in its scop and x is 150
+the third print is in the main scop and x is 100 in main scop 
+
+
+program can access varible in the above scope but not in lower 
+
+example :
+fn main (){
+    let x : i32 = 100;
+    {
+        println!("{x}");
+    }
+}
+
+will print the value of x as 100
+
+but 
+fn main (){
+    {
+        let x : i32 = 100;
+    }
+
+    println!("{x}");
+}
+
+will result in compile error 
+
+
+ 
+### the const keyword and constants 
+
+constants are like varibe a name for some value but once cant change delared cant be change even with the mut 
+
+constant differ from variables by 3 things 
+
+    1. constants are injected in the program in compile time while varibles are processed in run time
+        so if our constant have no file the program will crash 
+    2. constants can be accessed from file level fro out of scop but varibles need to be defiend in sma scop or parrent scope to be accessed
+
+    3. we need to hardkly define the data type by using : in constant while in varible the rust will add when we declare the value 
+
+
+declaration of constants 
+
+we create a const using the const key word 
+for example :
+
+const min_age : i32 = 18;
+
+fn main (){
+    println!("{min_age}")
+}
+
+will print out 18
+
+but if we try to rewrit like 
+
+const min_age : i32 = 18;
+
+fn main (){
+let min_age = 20;
+println!("{min_age}");
+
+}
+
+the compiler will throw out error 
+$cargo run 
+   Compiling variable v0.1.0 (/home/yohannes/Desktop/courses/rust/chapter_2/variables/variable)
+error[E0005]: refutable pattern in local binding
+  --> src/main.rs:37:8
+   |
+ 1 | const MIN_AGE: i32 = 18; 
+   | ------------------ missing patterns are not covered because `MIN_AGE` is interpreted as a constant pattern, not a new variable
+...
+37 |    let MIN_AGE: i32 = 18;
+   |        ^^^^^^^ patterns `i32::MIN..=17_i32` and `19_i32..=i32::MAX` not covered
+   |
+   = note: `let` bindings require an "irrefutable pattern", like a `struct` or an `enum` with only one variant
+   = note: for more information, visit https://doc.rust-lang.org/book/ch19-02-refutability.html
+   = note: the matched value is of type `i32`
+help: introduce a variable instead
+   |
+37 |    let MIN_AGE_var: i32 = 18;
+   |               ++++
+
+For more information about this error, try `rustc --explain E0005`.
+error: could not compile `variable` (bin "variable") due to 1 previous error
+┌─[✗]─[yohannes@parrot]─[~/Desktop/courses/rust/chapter_2/variables/variable]
+└──╼ $
+
+
+const values should be declared using a capital letter 
+
+
+### creating type type alisies 
+
+we can create a custom type using type key word 
+type Type_name = type type 
+
+for example we can create a type centimeter 
+as 
+type Centimeter = f64;
+
+and we can use it as 
+fn main (){
+    let length : Centimeter = 173.4;
+}
+
+so the other programmer can understand what is 173.4
+
+
+### compiler directives 
+
+are a command for the compiler to behave in certain way for specfic line of code or function or the whole program 
+
+we write above a line of code if we ant target that line of code . above the function if we target that functio 
+
+syntax :
+we declare using #[]
+
+
+usage :
+
+fn main (){
+
+    #[allow(unused_variables)]      // will tell the compiler to ignore the warning 
+    let x : i32 = 50;
+}
