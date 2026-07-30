@@ -1,0 +1,69 @@
+### variables in rust 
+variables are a namespace in which hold some value 
+for example instead of writing 
+fn main (){
+    50
+}
+
+in this case 50 just dont represent any thing what is 50
+
+but 
+fn main (){
+    let price : i32 = 50 ;
+}
+
+now 50 represent a price
+
+variables are immutable by default which means the value of the variable cant be change 
+
+for example 
+fn main (){
+    let s : i32 = 25;
+    println!(" the length of the table is {s} centimeters );
+
+    s = 10;  /// will cause an error saying 
+
+
+}
+in this example the variable s is immutable by default so when we reassign to 10 the compiler will throw and error 
+
+at 15:24 ❯ cargo run 
+   Compiling variable v0.1.0 (/home/yohannes/Desktop/courses/rust/chapter_2/variables/variable)
+error[E0384]: cannot assign twice to immutable variable `s`
+ --> src/main.rs:5:5
+  |
+2 |     let s:i32 = 25;
+  |         - first assignment to `s`
+...
+5 |     s = 10;
+  |     ^^^^^^ cannot assign twice to immutable variable
+  |
+help: consider making this binding mutable
+  |
+2 |     let mut s:i32 = 25;
+  |         +++
+
+
+from what we can see from the compiler output we cant reassign the variabke because it is immutabe and it suggest to make it mutable by adding the mut key word 
+
+### THE mut Keyword
+
+is used to make a variable mutable for example
+
+fn main (){
+    let mut s : i32 = 25;
+    println!("the length of the table is {s} centimeters");
+    s : i32 = 10;
+    println!("the value of the table is {s} centimeters");
+}
+
+now will compile and the output is 
+at 15:29 ❯ cargo run 
+   Compiling variable v0.1.0 (/home/yohannes/Desktop/courses/rust/chapter_2/variables/variable)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.16s
+     Running `target/debug/variable`
+ the length  of the tabel is 25 centimeters 
+ the length  of the tabel is 10 centimeters 
+
+in  .../chapter_2/variables/variable  via  main [?] is 📦 v0.1.0  v1.94.0 
+at 15:29 ❯ 
