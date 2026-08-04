@@ -1,3 +1,5 @@
+use std::i32;
+
 
 
 fn main (){
@@ -23,8 +25,28 @@ fn main (){
     }
 
   even_or_odd(19);
+
+    let age = 45;
+
+  // the match keyword 
+  // is used to match a possiblity of results for an expression 
+  // the syntax is 
+  // match expression {
+  //  arm =>{}
+  // }
   
+ let value = match age {
     
+   0..20 => true,
+   20..40 => false,
+   40..60 => true,
+   _ => false,  // in match cases if we want to refer all other cases we can use the underscore '_' as an arm and assign a fallback value 
+
+
+
+  }; 
+  // we can also assign a match expression to a variable and use it later in the code
+  println!("hi it is {value}")
 }
 
 fn even_or_odd(num:i32){
