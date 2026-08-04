@@ -1,4 +1,4 @@
-use std::i32;
+
 
 
 
@@ -51,8 +51,23 @@ fn main (){
 
   }; 
   // we can also assign a match expression to a variable and use it later in the code
-  println!("hi it is {value}")
-}
+  println!("hi it is {value}");
+
+
+  // example 2 even or odd with match statement
+
+  let x = 4;
+
+  let results = match x{
+    y if y % 2 == 0 => "even" ,
+    y if y % 2 == 1 => "odd",
+    _ => unreachable!(),  // unreachable is a macro in rust used to define when the result cant be happen 
+
+    
+  };
+
+  print!("The number is {results}");
+} 
 
 fn even_or_odd(num:i32){
     let result = if num % 2 == 0 { "even"} else { "odd" };
