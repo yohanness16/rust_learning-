@@ -37,11 +37,16 @@ fn main (){
   
  let value = match age {
     
-   0..20 => true,
+  /*  0..20 => true,
    20..40 => false,
    40..60 => true,
    _ => false,  // in match cases if we want to refer all other cases we can use the underscore '_' as an arm and assign a fallback value 
 
+*/  // other solutiuon 
+    input if input < 20 => true,
+    input if input > 20 && input < 40 => false,
+    input if input > 40 && input < 60 => true,
+    _ => false,
 
 
   }; 
